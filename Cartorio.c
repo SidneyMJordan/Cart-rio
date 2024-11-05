@@ -4,16 +4,18 @@
 #include <string.h> //biblioteca de String
 
 
-int registrar(){
+int registrar(){ //função responsavel por cadastrar usuario
 	
+	//inicio criação de variavel/ string
 	char arquivo[40];
 	char cpf[40];
 	char nome[40];
 	char sobrenome[40];
 	char cargo[40];
+	//final da criação de variavel
 	
-	printf("Digite o C.P.F:  ");
-	scanf("%s", cpf);
+	printf("Digite o C.P.F:  ");//coletando informação do usuario
+	scanf("%s", cpf);//%s refere-se a string
 	
 	strcpy(arquivo, cpf); //Responsavel por copiar comandos de string
 	
@@ -64,12 +66,48 @@ int registrar(){
 
 int consultar(){
 	
-	printf("Você escolheu 'Consultar nomes'\n");
-	system("pause");
+	setlocale(LC_ALL, "portuguese"); //Define linguagem
+
+		char cpf[40];
+		char conteudo[200];
+		
+	printf("Digite o CPF:   ");
+	scanf("%s", cpf);
+	
+		FILE *file;
+		file = fopen(cpf,"r");
+		
+	if(file == NULL){
+		
+		printf("CPF não localizado.\n");
+		system("pause");
+		
+	}
+	
+	while(fgets(conteudo, 200, file) != NULL){
+		
+		printf("\nEssas são as informações do usuário:  ");
+		printf("%s", conteudo);
+		printf("\n\n");
+		system("pause");
+	}
 }
 int deletar(){
 	
-	printf("Você escolheu 'Deletar nomes'\n");
+		char cpf[40];
+	
+	printf("Digite o CPF a ser deletado:  \n");
+	scanf("%s",cpf);
+	
+		FILE *file;
+		file =fopen(cpf,"r");
+	
+	if(file ==NULL){		
+		printf("Usuario não localizado. \n");
+		system("pause");		
+	}
+	
+	
 	system("pause");
 	
 }
@@ -84,18 +122,19 @@ int main()
 	for(x=1;x=1;)
 	{
 	
-		system("cls");
+		system("cls");// responsavel por limpar a tela
 	
 		setlocale(LC_ALL,"portuguese"); // Definindo linguagem
 	
-	
-		printf("\t###Cartório EBAC####\n\n"); //inicio menu
+	//inicio menu
+		printf("\t###Cartório EBAC####\n\n"); 
 		printf("escolha uma das opções no menu:\n\n");
 		printf("\t1 - Registrar nomes\n");	
 		printf("\t2 - Consultar nomes\n");
 		printf("\t3 - Deletar nomes\n"); 
 		printf("\t4 - Sair do sistema\n\n\n");
-		printf("opção: ");// fim menu
+		printf("opção: ");
+	// fim menu
 	
 	scanf("%d", &opcao); // armazenando as escolhas
 	
@@ -104,7 +143,7 @@ int main()
 	switch(opcao) // inicio da seleção
 	{
 		case 1:
-			registrar();
+			registrar();// chamada de funções
 			break;
 			
 		case 2:
