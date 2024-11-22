@@ -118,9 +118,22 @@ int main()
 {
 	int opcao=0; //Definindo variaveis
 	int x=1;
+	char senhadigitada[]="a";
+	int comparacao;
 	
+		printf("Login de administrador!\n\nDigite a sua senha:");
+		scanf("%s",senhadigitada);
+		
+		comparacao = strcmp(senhadigitada, "admin");
+		
+	if(comparacao == 0)	
+	{
+		
+		
+		
 	for(x=1;x=1;)
 	{
+		
 	
 		system("cls");// responsavel por limpar a tela
 	
@@ -167,4 +180,7 @@ int main()
 	} // fim da seleção
 	
 	}
+}
+else
+printf("Senha incorreta");
 }
